@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ideaLab 运营周报 W40 · 9月29日—10月5日</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .card { @apply bg-white rounded-2xl border border-slate-200/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]; }
+    .stat-number { @apply text-4xl font-bold tracking-tight; }
+    .stat-label { @apply text-sm text-slate-500 font-medium mt-1; }
+    .section-title { @apply text-lg font-semibold text-slate-800 tracking-tight mb-4 flex items-center gap-2; }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">芮</div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">ideaLab 小芮运营周报</h1>
+            <p class="text-sm text-slate-500">2026年第40周 · 9月29日—10月5日</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge bg-indigo-50 text-indigo-700">🔐 超级管理员内部周报</span>
+        <span class="text-xs text-slate-400">生成于 2026-10-05</span>
+      </div>
+    </div>
+
+    <!-- 国庆假期提示横幅 -->
+    <div class="card mb-8 bg-amber-50/60 border-amber-200">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🎉</span>
+        <div>
+          <div class="font-semibold text-amber-800 mb-1">本周为国庆长假静默周</div>
+          <p class="text-sm text-amber-700">统计周期（9/29—10/5）横跨国庆假期（10/1—10/8），4 个对接群内顾问休假，无业务提问。本周数据全部归零系假期所致，属预期内的正常静默，非活跃度异常。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card text-center">
+        <div class="stat-number text-indigo-600">0</div>
+        <div class="stat-label">总提问人次</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-emerald-600">0</div>
+        <div class="stat-label">活跃顾问数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-amber-600">0</div>
+        <div class="stat-label">覆盖群数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-rose-600">0</div>
+        <div class="stat-label">本周新用户</div>
+      </div>
+    </div>
+
+    <!-- 分区域活跃度 -->
+    <div class="card mb-8">
+      <div class="section-title">📍 分区域活跃度</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪南区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-indigo-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪北区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪东区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-amber-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">3D打印群</span><span class="text-slate-500">0人次</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-gray-300 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400">
+        🔔 本周三区 + 3D打印群均无提问，系国庆长假（10/1—10/8）顾问休假所致。各群最新活动停在上周末（9/27—9/28），已计入 W39 周报。
+      </div>
+    </div>
+
+    <!-- 分类 + 活跃度 -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="card">
+        <div class="section-title">🎯 问题分类分布</div>
+        <div class="flex justify-center"><canvas id="categoryChart" width="280" height="280"></canvas></div>
+        <div class="mt-4 text-xs text-slate-400 text-center">本周无提问，五类分类（P/T/TA/C/$/O）均为 0 次。</div>
+      </div>
+      <div class="card">
+        <div class="section-title">👤 用户活跃度</div>
+        <div class="p-8 text-center text-slate-400">
+          <div class="text-3xl mb-2">🌙</div>
+          <p class="text-sm">本周无活跃顾问</p>
+          <p class="text-xs mt-1">国庆长假期间 4 个对接群均静默</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据趋势 -->
+    <div class="card mb-8">
+      <div class="section-title">📊 数据趋势</div>
+      <div class="text-sm text-slate-500">
+        <p class="font-mono text-xs bg-slate-50 rounded-lg p-3">W27:15 → W28:5 → W29:14 → W30:5 → W31:3 → W32:4 → W33:5 → W34:3 → W35:4 → W36:7 → W37:6 → W38:1 → W39:5 → <span class="font-bold text-amber-600">W40:0</span></p>
+        <p class="mt-3">本周 0 人次，环比上周（5人次）归零，主因国庆长假顾问休假。历史同期（节假周）均会回落，属正常季节性波动。</p>
+      </div>
+    </div>
+
+    <!-- 学生案例追踪 -->
+    <div class="card mb-8">
+      <div class="section-title">📋 学生案例追踪</div>
+      <div class="text-sm text-slate-500 mb-3">本周无新增学生案例，此前跟踪案例均无新动态：</div>
+      <div class="p-3 border-l-4 border-rose-400 bg-rose-50/30 rounded-r-lg">
+        <div class="font-semibold text-sm text-rose-700">⏳ 此前跟踪案例（假期无动态）</div>
+        <div class="text-xs text-rose-500 mt-1">李涵的三年级学生（已报启航）、马卫平（三年级）、胡海燕（七宝中学·目标交大）、边立华（七年级）、花花（民办位育六年级）、余姣（高一·同济一附中）、Jason赵永刚（初一·冲四校）、Coco三年级、邹灿阳（黄浦向明）、杨帆、陈思 本周均无新动态。</div>
+      </div>
+    </div>
+
+    <!-- 下周建议 -->
+    <div class="card">
+      <div class="section-title">💡 下周建议</div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 bg-indigo-50 rounded-lg">
+          <div class="font-semibold text-sm text-indigo-700 mb-2">📋 节后回暖准备</div>
+          <ul class="text-xs text-indigo-600 space-y-1">
+            <li>• 国庆后进入招生季冲刺，提前备好获奖背书材料</li>
+            <li>• ICC/IEYI 申报时间轴卡片待固化</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-green-50 rounded-lg">
+          <div class="font-semibold text-sm text-green-700 mb-2">🔧 数据补充（延续W39）</div>
+          <ul class="text-xs text-green-600 space-y-1">
+            <li>• 青创/宋赛/明科区级获奖统计仍缺</li>
+            <li>• 「启航≠竞赛营」产品边界已固化，持续观察</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-amber-50 rounded-lg">
+          <div class="font-semibold text-sm text-amber-700 mb-2">⚠️ 群定位评估</div>
+          <ul class="text-xs text-amber-600 space-y-1">
+            <li>• 3D打印群连续多周零活动，重新评估定位</li>
+            <li>• 假期后确认顾问回归节奏</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-slate-200 text-center text-xs text-slate-400">
+      <p>📳 数据来源：沪北区 · 沪东区 · 沪南区 · 3D培训对接群 | 🔐 仅供超级管理员内部查阅</p>
+      <p class="mt-1">🏷️ 生成于 2026-10-05（周一 9:00）| 下次周报：2026-10-12</p>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('categoryChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['无提问'],
+        datasets: [{ data: [1], backgroundColor: ['#e2e8f0'], borderWidth: 0, borderRadius: 4 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '55%' }
+    });
+  </script>
+</body>
+</html>
