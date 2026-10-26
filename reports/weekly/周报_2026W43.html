@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ideaLab 运营周报 W43 · 10月20日—10月26日</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .card { @apply bg-white rounded-2xl border border-slate-200/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]; }
+    .stat-number { @apply text-4xl font-bold tracking-tight; }
+    .stat-label { @apply text-sm text-slate-500 font-medium mt-1; }
+    .section-title { @apply text-lg font-semibold text-slate-800 tracking-tight mb-4 flex items-center gap-2; }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">芮</div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">ideaLab 小芮运营周报</h1>
+            <p class="text-sm text-slate-500">2026年第43周 · 10月20日—10月26日</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge bg-indigo-50 text-indigo-700">🔐 超级管理员内部周报</span>
+        <span class="text-xs text-slate-400">生成于 2026-10-26</span>
+      </div>
+    </div>
+
+    <!-- 提示横幅 -->
+    <div class="card mb-8 bg-slate-50/80 border-slate-200">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🌿</span>
+        <div>
+          <div class="font-semibold text-slate-700 mb-1">本周四群零提问，低位震荡延续</div>
+          <p class="text-sm text-slate-500">W43（10/20—10/26）4 个对接群内无业务提问，继 W42（2 人次）后再度归零。W41 节后冲高后连续两周回落，整体处于「冲高后回落、低位震荡」的招生节奏波动期。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card text-center">
+        <div class="stat-number text-indigo-600">0</div>
+        <div class="stat-label">总提问人次</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-emerald-600">0</div>
+        <div class="stat-label">活跃顾问数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-amber-600">0</div>
+        <div class="stat-label">覆盖群数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-rose-600">0</div>
+        <div class="stat-label">本周新用户</div>
+      </div>
+    </div>
+
+    <!-- 分区域活跃度 -->
+    <div class="card mb-8">
+      <div class="section-title">📍 分区域活跃度</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪东区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-indigo-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪南区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-amber-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪北区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">3D打印群</span><span class="text-slate-500">0人次</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-gray-300 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400">
+        🔔 本周四群均无活动，沪东区（W42 唯一活跃区）本周也归零，各区同步静默。
+      </div>
+    </div>
+
+    <!-- 分类 + 活跃度 -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="card">
+        <div class="section-title">🎯 问题分类分布</div>
+        <div class="flex justify-center"><canvas id="categoryChart" width="280" height="280"></canvas></div>
+        <div class="mt-4 text-xs text-slate-400 text-center">本周无提问，五类分类（P/T/C/$/O）均为 0 次。</div>
+      </div>
+      <div class="card">
+        <div class="section-title">👤 用户活跃度</div>
+        <div class="text-sm text-slate-400 py-8 text-center">本周无活跃顾问</div>
+      </div>
+    </div>
+
+    <!-- 高频问题 -->
+    <div class="card mb-8">
+      <div class="section-title">🔥 高频问题</div>
+      <div class="text-sm text-slate-400 py-4 text-center">本周无提问记录，无高频问题</div>
+    </div>
+
+    <!-- 数据趋势 -->
+    <div class="card mb-8">
+      <div class="section-title">📊 数据趋势</div>
+      <div class="text-sm text-slate-500">
+        <p class="font-mono text-xs bg-slate-50 rounded-lg p-3">W27:15 → W28:5 → W29:14 → W30:5 → W31:3 → W32:4 → W33:5 → W34:3 → W35:4 → W36:7 → W37:6 → W38:1 → W39:5 → W40:0 → W41:9 → W42:2 → <span class="font-bold text-slate-700">W43:0</span></p>
+        <p class="mt-3">本周 0 人次，环比上周（2）回落归零。W41（9）节后短暂冲高后，W42、W43 连续回落，整体处于低位震荡的招生节奏波动期。</p>
+      </div>
+    </div>
+
+    <!-- 学生案例追踪 -->
+    <div class="card mb-8">
+      <div class="section-title">📋 学生案例追踪</div>
+      <div class="text-sm text-slate-500 mb-3">本周无新增学生案例，此前跟踪案例均无新动态：</div>
+      <div class="p-3 border-l-4 border-rose-400 bg-rose-50/30 rounded-r-lg">
+        <div class="font-semibold text-sm text-rose-700">⏳ 此前跟踪案例（本周无动态）</div>
+        <div class="text-xs text-rose-500 mt-1">李涵的三年级学生（已报启航）、马卫平（三年级）、胡海燕（七宝中学·目标交大）、边立华（七年级）、花花（民办位育六年级）、余姣（高一·同济一附中）、Jason赵永刚（初一·冲四校）、Coco三年级、邹灿阳（黄浦向明）、杨帆、陈思 本周均无新动态。</div>
+      </div>
+    </div>
+
+    <!-- 下周建议 -->
+    <div class="card">
+      <div class="section-title">💡 下周建议</div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 bg-indigo-50 rounded-lg">
+          <div class="font-semibold text-sm text-indigo-700 mb-2">📋 申报口径固化</div>
+          <ul class="text-xs text-indigo-600 space-y-1">
+            <li>• 趁静默期把「小学3赛 / 初中4赛 + 申报时间轴」做成对照卡，快速调用</li>
+            <li>• 青创/雏鹰/宋赛错峰申报的「时间轴一图流」固化为顾问 FAQ</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-green-50 rounded-lg">
+          <div class="font-semibold text-sm text-green-700 mb-2">🔧 产品分层宣导</div>
+          <ul class="text-xs text-green-600 space-y-1">
+            <li>• 强化「启航打底（ICC/长三角·体验型）、竞赛营冲奖（青创/宋赛/雏鹰·高含金量）」分层</li>
+            <li>• 提前消解「启航 vs 竞赛营」边界模糊的错配风险</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-amber-50 rounded-lg">
+          <div class="font-semibold text-sm text-amber-700 mb-2">⚠️ 群活跃监测</div>
+          <ul class="text-xs text-amber-600 space-y-1">
+            <li>• W41 冲高后连续两周回落，关注是否招生节奏自然波动</li>
+            <li>• 3D打印群持续静默，继续评估群定位与统计口径</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-slate-200 text-center text-xs text-slate-400">
+      <p>📳 数据来源：沪北区 · 沪东区 · 沪南区 · 3D培训对接群 | 🔐 仅供超级管理员内部查阅</p>
+      <p class="mt-1">🏷️ 生成于 2026-10-26（周一 9:00）| 下次周报：2026-11-02</p>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('categoryChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['无提问'],
+        datasets: [{ data: [1], backgroundColor: ['#e2e8f0'], borderWidth: 0, borderRadius: 4 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }, cutout: '55%' }
+    });
+  </script>
+</body>
+</html>
