@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ideaLab 运营周报 W45 · 11月3日—11月9日</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .card { @apply bg-white rounded-2xl border border-slate-200/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]; }
+    .stat-number { @apply text-4xl font-bold tracking-tight; }
+    .stat-label { @apply text-sm text-slate-500 font-medium mt-1; }
+    .section-title { @apply text-lg font-semibold text-slate-800 tracking-tight mb-4 flex items-center gap-2; }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">芮</div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">ideaLab 小芮运营周报</h1>
+            <p class="text-sm text-slate-500">2026年第45周 · 11月3日—11月9日</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge bg-indigo-50 text-indigo-700">🔐 超级管理员内部周报</span>
+        <span class="text-xs text-slate-400">生成于 2026-11-09</span>
+      </div>
+    </div>
+
+    <!-- 提示横幅 -->
+    <div class="card mb-8 bg-slate-50/80 border-slate-200">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🌿</span>
+        <div>
+          <div class="font-semibold text-slate-700 mb-1">低位震荡延续，沪南区独立支撑，退费口径成焦点</div>
+          <p class="text-sm text-slate-500">W45（11/3—11/9）仅沪南区活跃（邵辉、饶子祥 Jimi），3 条提问中 2 条落在「退费/服务结束」口径。沪东区回温后又归零，整体仍处低位震荡区间。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card text-center">
+        <div class="stat-number text-indigo-600">3</div>
+        <div class="stat-label">总提问人次</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-emerald-600">2</div>
+        <div class="stat-label">活跃顾问数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-amber-600">1</div>
+        <div class="stat-label">覆盖群数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-rose-600">1</div>
+        <div class="stat-label">本周新用户</div>
+      </div>
+    </div>
+
+    <!-- 分区域活跃度 -->
+    <div class="card mb-8">
+      <div class="section-title">📍 分区域活跃度</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪南区</span><span class="text-slate-500">3人次（100%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-indigo-500 h-3 rounded-full" style="width:100%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪东区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-amber-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪北区</span><span class="text-slate-500">0人次（0%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">3D打印群</span><span class="text-slate-500">0人次</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-gray-300 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400">
+        🔔 本周仅沪南区活跃（邵辉、饶子祥 Jimi），沪东区在 W44 回温后归零，沪北区、3D打印群持续静默。
+      </div>
+    </div>
+
+    <!-- 分类 + 活跃度 -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="card">
+        <div class="section-title">🎯 问题分类分布</div>
+        <div class="flex justify-center"><canvas id="categoryChart" width="280" height="280"></canvas></div>
+        <div class="mt-4 text-xs text-slate-400 text-center">本周提问集中在「价格课时」（$）类 2 条，赛事规划（T）1 条。</div>
+      </div>
+      <div class="card">
+        <div class="section-title">👤 用户活跃度</div>
+        <div class="space-y-3 mt-2">
+          <div class="flex items-center justify-between p-3 bg-indigo-50 rounded-lg">
+            <div>
+              <div class="font-medium text-sm text-slate-700">邵辉</div>
+              <div class="text-xs text-slate-500">沪南区 · 2 次提问</div>
+            </div>
+            <span class="text-xs text-slate-400">初中竞赛营赛事 + 服务结束口径</span>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg">
+            <div>
+              <div class="font-medium text-sm text-slate-700">饶子祥 Jimi</div>
+              <div class="text-xs text-slate-500">沪南区 · 1 次提问</div>
+            </div>
+            <span class="text-xs text-slate-400">雏鹰杯科奇少年退费机制</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 高频问题 -->
+    <div class="card mb-8">
+      <div class="section-title">🔥 高频问题</div>
+      <div class="text-sm text-slate-500 space-y-2">
+        <p>本周提问量较少（3 条），不构成高频，但话题指向明确：</p>
+        <div class="p-3 border-l-4 border-indigo-400 bg-indigo-50/30 rounded-r-lg">
+          <div class="font-semibold text-sm text-indigo-700">① 竞赛营退费/服务结束口径</div>
+          <div class="text-xs text-indigo-600 mt-1">邵辉、饶子祥两条提问均落在「退费/兑现」上——顾问在给家长做竞赛营（初中版、雏鹰杯）销售时，最关心「钱怎么收、什么情况退」。</div>
+        </div>
+        <div class="p-3 border-l-4 border-emerald-400 bg-emerald-50/30 rounded-r-lg">
+          <div class="font-semibold text-sm text-emerald-700">② 竞赛营赛事范围确认</div>
+          <div class="text-xs text-emerald-600 mt-1">邵辉问「初中竞赛营参加哪些赛事」——销售前对产品边界的常规确认。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据趋势 -->
+    <div class="card mb-8">
+      <div class="section-title">📊 数据趋势</div>
+      <div class="text-sm text-slate-500">
+        <p class="font-mono text-xs bg-slate-50 rounded-lg p-3">W27:15 → W28:5 → W29:14 → W30:5 → W31:3 → W32:4 → W33:5 → W34:3 → W35:4 → W36:7 → W37:6 → W38:1 → W39:5 → W40:0 → W41:9 → W42:2 → W43:0 → W44:3 → <span class="font-bold text-slate-700">W45:3</span></p>
+        <p class="mt-3">本周 3 人次，环比上周（3）持平。整体仍处「冲高后回落、低位震荡」区间，沪南区独立支撑，沪东区回温后又归零，其他区持续静默。</p>
+      </div>
+    </div>
+
+    <!-- 学生案例追踪 -->
+    <div class="card mb-8">
+      <div class="section-title">📋 学生案例追踪</div>
+      <div class="text-sm text-slate-500 mb-3">本周无新增学生案例，此前跟踪案例均无新动态。</div>
+    </div>
+
+    <!-- 下周建议 -->
+    <div class="card">
+      <div class="section-title">💡 下周建议</div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 bg-indigo-50 rounded-lg">
+          <div class="font-semibold text-sm text-indigo-700 mb-2">💰 沉淀退费/兑现 FAQ</div>
+          <ul class="text-xs text-indigo-600 space-y-1">
+            <li>• 本周 3 条里 2 条都是退费/服务结束口径</li>
+            <li>• 建议整理「各产品退费承诺、兑现条件、不参赛场景收费」对照表入库</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-green-50 rounded-lg">
+          <div class="font-semibold text-sm text-green-700 mb-2">🔤 澄清「科奇少年」口径</div>
+          <ul class="text-xs text-green-600 space-y-1">
+            <li>• 邵炎、饶子祥两次问到，知识库无此正式名称</li>
+            <li>• 疑似招募物料主题词，需确认与「雏鹰杯&长三角专项营」对应关系</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-amber-50 rounded-lg">
+          <div class="font-semibold text-sm text-amber-700 mb-2">⚠️ 群活跃监测</div>
+          <ul class="text-xs text-amber-600 space-y-1">
+            <li>• 沪东区回温后归零，关注是否进入销售淡季</li>
+            <li>• 新顾问饶子祥 Jimi 首次出现，纳入新人宣导名单</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-slate-200 text-center text-xs text-slate-400">
+      <p>📳 数据来源：沪北区 · 沪东区 · 沪南区 · 3D培训对接群 | 🔐 仅供超级管理员内部查阅</p>
+      <p class="mt-1">🏷️ 生成于 2026-11-09（周一 9:00）| 下次周报：2026-11-16</p>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('categoryChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['价格课时 ($)', '赛事规划 (T)'],
+        datasets: [{ data: [2, 1], backgroundColor: ['#f59e0b', '#6366f1'], borderWidth: 0, borderRadius: 4 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }, cutout: '55%' }
+    });
+  </script>
+</body>
+</html>
