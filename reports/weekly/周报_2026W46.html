@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ideaLab 运营周报 W46 · 11月10日—11月16日</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .card { @apply bg-white rounded-2xl border border-slate-200/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]; }
+    .stat-number { @apply text-4xl font-bold tracking-tight; }
+    .stat-label { @apply text-sm text-slate-500 font-medium mt-1; }
+    .section-title { @apply text-lg font-semibold text-slate-800 tracking-tight mb-4 flex items-center gap-2; }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">芮</div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">ideaLab 小芮运营周报</h1>
+            <p class="text-sm text-slate-500">2026年第46周 · 11月10日—11月16日</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge bg-indigo-50 text-indigo-700">🔐 超级管理员内部周报</span>
+        <span class="text-xs text-slate-400">生成于 2026-11-16</span>
+      </div>
+    </div>
+
+    <!-- 提示横幅 -->
+    <div class="card mb-8 bg-slate-50/80 border-slate-200">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🌿</span>
+        <div>
+          <div class="font-semibold text-slate-700 mb-1">三区同步活跃，「启航课程口径」成焦点，赛事时间轴仍是顾问刚需</div>
+          <p class="text-sm text-slate-500">W46（11/10—11/16）沪南、沪东、沪北三区同步提问（4 条），较上周仅沪南单区（3 条）小幅回升。焦点转向「启航课程结构」（2 条产品咨询），竞赛营备赛时间轴持续是顾问追问重点。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card text-center">
+        <div class="stat-number text-indigo-600">4</div>
+        <div class="stat-label">总提问人次</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-emerald-600">3</div>
+        <div class="stat-label">活跃顾问数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-amber-600">3</div>
+        <div class="stat-label">覆盖群数</div>
+      </div>
+      <div class="card text-center">
+        <div class="stat-number text-rose-600">1</div>
+        <div class="stat-label">本周新用户</div>
+      </div>
+    </div>
+
+    <!-- 分区域活跃度 -->
+    <div class="card mb-8">
+      <div class="section-title">📍 分区域活跃度</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪南区</span><span class="text-slate-500">2人次（50%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-indigo-500 h-3 rounded-full" style="width:50%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪东区</span><span class="text-slate-500">1人次（25%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-amber-500 h-3 rounded-full" style="width:25%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">沪北区</span><span class="text-slate-500">1人次（25%）</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:25%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="font-medium">3D打印群</span><span class="text-slate-500">0人次</span></div>
+          <div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-gray-300 h-3 rounded-full" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400">
+        🔔 本周三区同步活跃：沪南区 2 条（田新艳），沪东区 1 条（杨会云），沪北区 1 条（刘鹤鸣）。3D打印群持续静默。
+      </div>
+    </div>
+
+    <!-- 分类 + 活跃度 -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="card">
+        <div class="section-title">🎯 问题分类分布</div>
+        <div class="flex justify-center"><canvas id="categoryChart" width="280" height="280"></canvas></div>
+        <div class="mt-4 text-xs text-slate-400 text-center">本周「赛事规划」（T）2 条、「产品咨询」（P）2 条，各占一半。</div>
+      </div>
+      <div class="card">
+        <div class="section-title">👤 用户活跃度</div>
+        <div class="space-y-3 mt-2">
+          <div class="flex items-center justify-between p-3 bg-indigo-50 rounded-lg">
+            <div>
+              <div class="font-medium text-sm text-slate-700">燕子（田新艳）</div>
+              <div class="text-xs text-slate-500">沪南区 · 2 次提问</div>
+            </div>
+            <span class="text-xs text-slate-400">竞赛营备赛时间线 + 四年级出结果赛事</span>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
+            <div>
+              <div class="font-medium text-sm text-slate-700">杨会云</div>
+              <div class="text-xs text-slate-500">沪东区 · 1 次提问</div>
+            </div>
+            <span class="text-xs text-slate-400">启航升级赛事包口径</span>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg">
+            <div>
+              <div class="font-medium text-sm text-slate-700">刘鹤鸣（鹤子）</div>
+              <div class="text-xs text-slate-500">沪北区 · 1 次提问</div>
+            </div>
+            <span class="text-xs text-slate-400">春季启航 12 次课 vs 15 次课区别</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 高频问题 -->
+    <div class="card mb-8">
+      <div class="section-title">🔥 高频问题</div>
+      <div class="text-sm text-slate-500 space-y-2">
+        <p>本周 4 条提问，聚焦两大主题：</p>
+        <div class="p-3 border-l-4 border-indigo-400 bg-indigo-50/30 rounded-r-lg">
+          <div class="font-semibold text-sm text-indigo-700">① 启航计划课程结构（2 条）</div>
+          <div class="text-xs text-indigo-600 mt-1">杨会云问「启航升级赛事包」，刘鹤鸣问「春季启航 12 次课 vs 15 次课内容区别」——顾问在推启航时，对课程到底几节课、出口赛事怎么升级的边界最关心。</div>
+        </div>
+        <div class="p-3 border-l-4 border-emerald-400 bg-emerald-50/30 rounded-r-lg">
+          <div class="font-semibold text-sm text-emerald-700">② 竞赛营备赛时间轴（2 条）</div>
+          <div class="text-xs text-emerald-600 mt-1">田新艳连续两条问「竞赛营地投比赛时间线」「四年级报、五年级末能出结果的赛事」——顾问给家长排时间规划时，最需要清晰的赛事节奏表。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据趋势 -->
+    <div class="card mb-8">
+      <div class="section-title">📊 数据趋势</div>
+      <div class="text-sm text-slate-500">
+        <p class="font-mono text-xs bg-slate-50 rounded-lg p-3">W27:15 → W28:5 → W29:14 → W30:5 → W31:3 → W32:4 → W33:5 → W34:3 → W35:4 → W36:7 → W37:6 → W38:1 → W39:5 → W40:0 → W41:9 → W42:2 → W43:0 → W44:3 → W45:3 → <span class="font-bold text-slate-700">W46:4</span></p>
+        <p class="mt-3">本周 4 人次，环比上周（3）小幅回升，且从「沪南单区」转为「三区同步」。整体仍在低位震荡区间，但活跃面有所扩散，是一个偏积极的信号。</p>
+      </div>
+    </div>
+
+    <!-- 学生案例追踪 -->
+    <div class="card mb-8">
+      <div class="section-title">📋 学生案例追踪</div>
+      <div class="text-sm text-slate-500 mb-3">本周无新增学生案例。田新艳咨询的「四年级孩子」为备赛规划类咨询，尚未形成可长期跟踪的具体学生档案。</div>
+    </div>
+
+    <!-- 下周建议 -->
+    <div class="card">
+      <div class="section-title">💡 下周建议</div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 bg-indigo-50 rounded-lg">
+          <div class="font-semibold text-sm text-indigo-700 mb-2">📚 沉淀启航课程结构 FAQ</div>
+          <ul class="text-xs text-indigo-600 space-y-1">
+            <li>• 本周 2 条都在问启航课程结构（课次、升级路径）</li>
+            <li>• 建议把「启航 12 次 vs 15 次」「升级赛事包」口径整理成一张课表对照图入库</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-green-50 rounded-lg">
+          <div class="font-semibold text-sm text-green-700 mb-2">🗓️ 固化竞赛营备赛时间轴</div>
+          <ul class="text-xs text-green-600 space-y-1">
+            <li>• 田新艳连续追问时间线，说明顾问排期时缺一张「年级×赛事出结果时间」对照表</li>
+            <li>• 建议按学段做「几年级报 → 哪一年出结果」的可视化时间轴</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-amber-50 rounded-lg">
+          <div class="font-semibold text-sm text-amber-700 mb-2">⚠️ 3D打印群持续静默</div>
+          <ul class="text-xs text-amber-600 space-y-1">
+            <li>• 3D打印培训对接群连续多周无 session，建议确认该群是否仍在运营</li>
+            <li>• 新顾问田新艳首次出现，纳入新人宣导名单</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-slate-200 text-center text-xs text-slate-400">
+      <p>📳 数据来源：沪北区 · 沪东区 · 沪南区 · 3D培训对接群 | 🔐 仅供超级管理员内部查阅</p>
+      <p class="mt-1">🏷️ 生成于 2026-11-16（周一 9:00）| 下次周报：2026-11-23</p>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('categoryChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['赛事规划 (T)', '产品咨询 (P)'],
+        datasets: [{ data: [2, 2], backgroundColor: ['#6366f1', '#f59e0b'], borderWidth: 0, borderRadius: 4 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }, cutout: '55%' }
+    });
+  </script>
+</body>
+</html>
